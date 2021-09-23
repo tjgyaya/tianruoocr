@@ -1110,16 +1110,20 @@ namespace TrOCR
 						text4 = "ko";
 					}
 				}
-                var data = string.Concat("client=gtx&sl=", text3, "&tl=", text4, "&dt=t&q=",
-                    HttpUtility.UrlEncode(text)?.Replace("+", "%20"));
-                var html = CommonHelper.PostStrData("https://translate.google.cn/translate_a/single", data);
 
-				var jArray = (JArray)JsonConvert.DeserializeObject(html);
-				var count = ((JArray)jArray[0]).Count;
-				for (var i = 0; i < count; i++)
-				{
-					text2 += jArray[0][i][0].ToString();
-				}
+				text2= GoogleTranslate.Translate(text, text3, text4);
+
+
+				//var data = string.Concat("client=gtx&sl=", text3, "&tl=", text4, "&dt=t&q=",
+    //                HttpUtility.UrlEncode(text)?.Replace("+", "%20"));
+    //            var html = CommonHelper.PostStrData("https://translate.google.cn/translate_a/single", data);
+
+				//var jArray = (JArray)JsonConvert.DeserializeObject(html);
+				//var count = ((JArray)jArray[0]).Count;
+				//for (var i = 0; i < count; i++)
+				//{
+				//	text2 += jArray[0][i][0].ToString();
+				//}
 			}
 			catch (Exception)
 			{
